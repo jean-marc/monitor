@@ -31,11 +31,11 @@
  *	to send HTML formated email use:
  *	mutt -e "set content_type=text/html" address -s "subject" < test.html
  */
-#include "objrdf.h"
-#include "sparql_engine.h"
-#include "httpd.h"
-#include "geo.h"
-#include "rdf_xml_parser.h"
+#include <objrdf/objrdf.h>
+#include <objrdf/sparql_engine.h>
+#include <objrdf/httpd.h>
+#include <objrdf/geo.h>
+#include <objrdf/rdf_xml_parser.h>
 #include <memory>
 using namespace objrdf;
 //typedef int BASE_CLASS; does not work!
