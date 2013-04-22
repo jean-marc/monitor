@@ -114,8 +114,10 @@ namespace monitor{
 	PROPERTY(name,my_string);
 	PERSISTENT_CLASS(Organization,std::tuple<>);
 	PROPERTY(organization,Organization::allocator::pointer);
+	PERSISTENT_CLASS(District,std::tuple<>);
+	PROPERTY(district,District::allocator::pointer);
 	//Site could be a sub class of Timed
-	DERIVED_PERSISTENT_CLASS(Site,geo::Point,std::tuple<name,organization,array<report>>);
+	DERIVED_PERSISTENT_CLASS(Site,geo::Point,std::tuple<name,district,organization,array<report>>);
 	PROPERTY(located,Site::allocator::pointer);
 	//maybe should use friend of a friend ontology for people
 	//people
