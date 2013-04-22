@@ -21,7 +21,7 @@ Natural name for equipment is the serial number (with some restrictions imposed 
 ###Modifying the schema
 Should the database schema be modified (add a new field to a class, add a new class,...), the C++ source code will have to be edited and the server rebuilt. 
 For the sake of illustration let us add a new property 'district' to the 'Site' class, used to represent a (potential) site for kiosk installation.
-The modification to the code is minor (commit SHA: bfef7f500b9fd0ccdeec2e29662999135e2fae82):
+The modification to the code is minor (commit SHA: bfef7f500b9fd0ccdeec2e29662999135e2fae82 ):
 ```cpp
 PERSISTENT_CLASS(District,std::tuple<>);
 PROPERTY(district,District::allocator::pointer);
