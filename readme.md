@@ -9,8 +9,18 @@ The monitoring systems comprises several elements:
 
 There are 2 users dedicated to the monitoring tasks:
 
-* monitor: runs monitoring jobs on remote hosts and sends the result to the database, it logs in as unicef_admin on the remote machines using public key authentication (older systems do not have the 'unicef_admin' user, it can be added with ```useradd -n -s /bin/bash -G admin,dialout unicef_admin```, alternatively .ssh/config can be modified to use a different user depending on IP address)
+* monitor: runs monitoring jobs on remote hosts and sends the result to the database, it logs in as unicef_admin on the remote machines using public key authentication (older systems do not have the 'unicef_admin' user, it can be added with ```useradd -m -s /bin/bash -G admin,dialout unicef_admin```, alternatively .ssh/config can be modified to use a different user depending on IP address)
 * objrdf: runs the database and web server on non-privileged port (1080)
+
+##Monitoring
+
+The monitoring tasks are run by user 'monitor', a few scripts are used:
+
+* [/script/local_script.sh](/script/local_script.sh)
+* [/script/monitoring.sh](/script/monitoring.sh) looks up the list of connected VPN clients (/etc/openvpn/openvpn-status.log), starts a SSH session, runs local_script.sh and sends query to database
+* [/script/track.sh](/script/track.sh) is called when a machine comes on-line, it adds an ip_add field to the site (displayed as 'VPN IP address' on the web interface), it also run webalizer.sh to retrieve the latest web log report.
+* [/script/webalizer.sh](/script/webalizer.sh) synchronizes web reports (available on monitor.unicefuganda.org/monitor/kiosk_name)
+* [/script/identify.sh](/script/identify.sh) list all the machines currently connected
 
 
 ##Database
